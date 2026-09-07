@@ -18,16 +18,18 @@ export default function App() {
 
   return (
     <TooltipProvider>
-      <div className="min-h-screen overflow-x-hidden bg-cream font-sans text-ink">
+      <div className="bg-cream font-sans text-ink">
         <Header />
-        <Hero />
-        <InfoBar />
-        <Turnero phone={PHONE} />
-        <Precios />
-        <Complejo />
-        <Cancelar phone={PHONE} />
-        <Ubicacion />
-        <Footer />
+        <div className="min-h-screen overflow-x-hidden">
+          <Hero />
+          <InfoBar />
+          <Turnero phone={PHONE} />
+          <Precios />
+          <Complejo />
+          <Cancelar phone={PHONE} />
+          <Ubicacion />
+          <Footer />
+        </div>
         <WhatsappFloat href={waGeneral} />
       </div>
     </TooltipProvider>
