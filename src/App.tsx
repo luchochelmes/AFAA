@@ -11,7 +11,7 @@ import { WhatsappFloat } from './components/WhatsappFloat';
 import { TooltipProvider } from './components/Tooltip';
 import { waLink } from './lib/booking';
 
-const PHONE = '3516598378';
+const PHONE = '3517545955';
 
 export default function App() {
   const waGeneral = waLink(PHONE, '¡Hola AFA! Quiero reservar una cancha.');
