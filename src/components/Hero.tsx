@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { AnimatePresence, motion } from 'framer-motion';
 import { Phone } from 'lucide-react';
 import { ButtonLink } from './Button';
@@ -9,18 +9,33 @@ const HERO_VIDEOS = ['/videos/futbol-hero.mp4', '/videos/padel-hero.mp4'];
 export function Hero() {
   const [index, setIndex] = useState(0);
   const src = HERO_VIDEOS[index];
+  const videoRef = useRef<HTMLVideoElement>(null);
+
+  useEffect(() => {
+    const video = videoRef.current;
+    if (!video) return;
+    // some mobile browsers ignore the autoPlay attribute on a freshly
+    // (re)mounted <video> — force it and swallow the promise rejection
+    // that happens if the tab is backgrounded when this runs.
+    video.muted = true;
+    video.play().catch(() => {});
+  }, [src]);
 
   return (
     <section id="top" className="relative isolate flex min-h-[520px] items-end overflow-hidden sm:min-h-[460px] md:min-h-[560px]">
       <div className="absolute inset-0 z-0 bg-ink">
         <AnimatePresence mode="wait">
           <motion.video
+            ref={videoRef}
             key={src}
             className="h-full w-full object-cover"
             src={src}
             autoPlay
             muted
+            loop={false}
             playsInline
+            webkit-playsinline="true"
+            preload="auto"
             onEnded={() => setIndex((i) => (i + 1) % HERO_VIDEOS.length)}
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}

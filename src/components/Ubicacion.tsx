@@ -1,11 +1,12 @@
 import { Clock, Instagram, MapPin, Phone } from 'lucide-react';
 import { ButtonLink } from './Button';
+import { RevealGroup, RevealItem } from './Reveal';
 
 export function Ubicacion() {
   return (
     <section id="ubicacion" className="mt-10 bg-ink text-cream sm:mt-14">
-      <div className="mx-auto grid max-w-[1180px] grid-cols-1 items-start gap-6 px-4 py-10 sm:grid-cols-2 sm:gap-[30px] sm:px-5 sm:py-14">
-        <div>
+      <RevealGroup className="mx-auto grid max-w-[1180px] grid-cols-1 items-start gap-6 px-4 py-10 sm:grid-cols-2 sm:gap-[30px] sm:px-5 sm:py-14">
+        <RevealItem>
           <div className="mb-3.5 font-sans text-xs uppercase tracking-widest text-lime">Ubicación</div>
           <h2
             className="mb-[18px] font-display font-extrabold leading-[1.05] tracking-tighter"
@@ -53,16 +54,16 @@ export function Ubicacion() {
               @afapadel
             </ButtonLink>
           </div>
-        </div>
-        <div className="min-h-[300px] overflow-hidden rounded-[18px] border border-greenBorder bg-greenDeep">
+        </RevealItem>
+        <RevealItem className="min-h-[300px] overflow-hidden rounded-[18px] border border-greenBorder bg-greenDeep">
           <iframe
             title="Mapa del complejo"
             src="https://www.google.com/maps?q=Av.%20Juan%20B%20Justo%204981%2C%20C%C3%B3rdoba&output=embed"
             loading="lazy"
             className="block h-[340px] w-full border-0"
           />
-        </div>
-      </div>
+        </RevealItem>
+      </RevealGroup>
     </section>
   );
 }

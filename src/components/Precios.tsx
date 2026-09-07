@@ -1,5 +1,6 @@
 import { Info } from 'lucide-react';
 import { Badge } from './Badge';
+import { Reveal, RevealGroup, RevealItem } from './Reveal';
 import { Tooltip } from './Tooltip';
 
 const PLANS = [
@@ -45,21 +46,23 @@ const SERVICES = [
 export function Precios() {
   return (
     <section id="precios" className="mx-auto max-w-[1180px] px-4 pb-6 pt-10 sm:px-5 sm:pt-14">
-      <h2
-        className="mb-1.5 font-display font-extrabold tracking-tighter"
-        style={{ fontSize: 'clamp(26px, 6vw, 40px)' }}
-      >
-        Precios y servicios
-      </h2>
-      <div className="mb-5 flex items-center gap-1.5 font-sans text-[11px] text-muted sm:mb-[26px]">
-        Valores de ejemplo — reemplazar por la tarifa vigente.
-        <Tooltip label="Estos precios son de muestra para el diseño. Actualizalos con la tarifa real del complejo.">
-          <Info className="h-3.5 w-3.5 cursor-help" strokeWidth={2.2} />
-        </Tooltip>
-      </div>
-      <div className="grid gap-3 sm:gap-3.5" style={{ gridTemplateColumns: 'repeat(auto-fit, minmax(230px, 1fr))' }}>
+      <Reveal>
+        <h2
+          className="mb-1.5 font-display font-extrabold tracking-tighter"
+          style={{ fontSize: 'clamp(26px, 6vw, 40px)' }}
+        >
+          Precios y servicios
+        </h2>
+        <div className="mb-5 flex items-center gap-1.5 font-sans text-[11px] text-muted sm:mb-[26px]">
+          Valores de ejemplo — reemplazar por la tarifa vigente.
+          <Tooltip label="Estos precios son de muestra para el diseño. Actualizalos con la tarifa real del complejo.">
+            <Info className="h-3.5 w-3.5 cursor-help" strokeWidth={2.2} />
+          </Tooltip>
+        </div>
+      </Reveal>
+      <RevealGroup className="grid gap-3 sm:gap-3.5" style={{ gridTemplateColumns: 'repeat(auto-fit, minmax(230px, 1fr))' }}>
         {PLANS.map((p) => (
-          <div
+          <RevealItem
             key={p.label}
             className={
               p.dark
@@ -82,18 +85,21 @@ export function Precios() {
             <span className={'mt-1.5 text-[13px] leading-relaxed ' + (p.dark ? 'text-cream3' : 'text-muted')}>
               {p.desc}
             </span>
-          </div>
+          </RevealItem>
         ))}
-      </div>
+      </RevealGroup>
 
-      <div className="mt-3.5 grid gap-3" style={{ gridTemplateColumns: 'repeat(auto-fit, minmax(170px, 1fr))' }}>
+      <RevealGroup
+        className="mt-3.5 grid gap-3"
+        style={{ gridTemplateColumns: 'repeat(auto-fit, minmax(170px, 1fr))' }}
+      >
         {SERVICES.map((s) => (
-          <div key={s.title} className="rounded-2xl border border-border bg-white p-4">
+          <RevealItem key={s.title} className="rounded-2xl border border-border bg-white p-4">
             <span className="mb-1 block text-[15px] font-semibold">{s.title}</span>
             <span className="text-[13px] leading-relaxed text-muted">{s.desc}</span>
-          </div>
+          </RevealItem>
         ))}
-      </div>
+      </RevealGroup>
     </section>
   );
 }

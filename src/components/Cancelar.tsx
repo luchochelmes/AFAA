@@ -3,6 +3,7 @@ import { XCircle } from 'lucide-react';
 import { waLink } from '../lib/booking';
 import { submitReservation } from '../lib/api';
 import { ButtonLink } from './Button';
+import { RevealGroup, RevealItem } from './Reveal';
 
 export function Cancelar({ phone }: { phone: string }) {
   const [cancelName, setCancelName] = useState('');
@@ -20,8 +21,8 @@ export function Cancelar({ phone }: { phone: string }) {
 
   return (
     <section id="cancelar" className="mx-auto max-w-[1180px] px-4 pb-6 pt-10 sm:px-5 sm:pt-14">
-      <div className="grid grid-cols-1 items-start gap-6 sm:grid-cols-2 sm:gap-[22px]">
-        <div>
+      <RevealGroup className="grid grid-cols-1 items-start gap-6 sm:grid-cols-2 sm:gap-[22px]">
+        <RevealItem>
           <h2
             className="mb-3.5 font-display font-extrabold tracking-tighter"
             style={{ fontSize: 'clamp(26px, 6vw, 40px)' }}
@@ -37,8 +38,8 @@ export function Cancelar({ phone }: { phone: string }) {
             <li>Queda cancelado cuando te responden desde el complejo.</li>
             <li>Si llegás tarde, avisá igual: se puede correr el horario según disponibilidad.</li>
           </ul>
-        </div>
-        <div className="flex flex-col gap-3.5 rounded-[18px] border border-border bg-white p-[22px]">
+        </RevealItem>
+        <RevealItem className="flex flex-col gap-3.5 rounded-[18px] border border-border bg-white p-[22px]">
           <label className="flex flex-col gap-1.5">
             <span className="font-sans text-[11px] uppercase tracking-widest text-muted">Nombre de la reserva</span>
             <input
@@ -71,8 +72,8 @@ export function Cancelar({ phone }: { phone: string }) {
             <XCircle className="h-4 w-4" strokeWidth={2.4} />
             Enviar cancelación por WhatsApp
           </ButtonLink>
-        </div>
-      </div>
+        </RevealItem>
+      </RevealGroup>
     </section>
   );
 }

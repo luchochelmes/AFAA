@@ -4,6 +4,7 @@ import { CalendarCheck } from 'lucide-react';
 import { cn } from '../lib/cn';
 import { courtsFor, getDays, isTaken, priceFor, timesFor, waLink, type Sport } from '../lib/booking';
 import { submitReservation } from '../lib/api';
+import { Reveal, RevealGroup, RevealItem } from './Reveal';
 import { Tooltip } from './Tooltip';
 
 const chip = (active: boolean) =>
@@ -66,7 +67,7 @@ export function Turnero({ phone }: { phone: string }) {
 
   return (
     <section id="turnero" className="mx-auto max-w-[1180px] px-4 pb-6 pt-10 sm:px-5 sm:pt-16">
-      <div className="mb-5 flex flex-wrap items-end justify-between gap-4 sm:mb-[26px] sm:gap-5">
+      <Reveal className="mb-5 flex flex-wrap items-end justify-between gap-4 sm:mb-[26px] sm:gap-5">
         <div>
           <div className="mb-2.5 font-sans text-xs uppercase tracking-widest text-forest">Turnero</div>
           <h2
@@ -79,14 +80,14 @@ export function Turnero({ phone }: { phone: string }) {
         <p className="max-w-[32ch] font-sans text-sm leading-relaxed text-muted">
           Disponibilidad de referencia. Al elegir el turno se arma el mensaje y lo confirmás por WhatsApp.
         </p>
-      </div>
+      </Reveal>
 
-      <div
+      <RevealGroup
         className="grid items-start gap-4 sm:gap-5"
         style={{ gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))' }}
       >
         {/* Step 1-3 */}
-        <div className="flex flex-col gap-5 rounded-[18px] border border-border bg-white p-4 sm:gap-6 sm:p-[22px]">
+        <RevealItem className="flex flex-col gap-5 rounded-[18px] border border-border bg-white p-4 sm:gap-6 sm:p-[22px]">
           <div className="flex flex-col gap-2.5">
             <span className="font-sans text-[11px] uppercase tracking-widest text-muted">1 · Deporte</span>
             <Tabs.Root value={sport} onValueChange={(v) => pickSport(v as Sport)}>
@@ -143,10 +144,10 @@ export function Turnero({ phone }: { phone: string }) {
               ))}
             </div>
           </div>
-        </div>
+        </RevealItem>
 
         {/* Step 4 + summary */}
-        <div className="flex flex-col gap-4 rounded-[18px] border border-border bg-white p-[22px]">
+        <RevealItem className="flex flex-col gap-4 rounded-[18px] border border-border bg-white p-[22px]">
           <div className="flex flex-wrap items-baseline justify-between gap-3">
             <span className="font-sans text-[11px] uppercase tracking-widest text-muted">4 · Horario</span>
             <span className="font-sans text-[11px] text-muted">
@@ -218,8 +219,8 @@ export function Turnero({ phone }: { phone: string }) {
               El turno queda tomado cuando te responden por WhatsApp. Cancelás sin cargo hasta 1:30 h antes.
             </span>
           </div>
-        </div>
-      </div>
+        </RevealItem>
+      </RevealGroup>
     </section>
   );
 }
