@@ -1,0 +1,40 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  background: #f7f8f5;
+}
+
+a {
+  color: #167a3c;
+  text-decoration: none;
+}
+a:hover {
+  color: #10201a;
+}
+
+@keyframes afaPulse {
+  0%,
+  100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.06);
+  }
+}
+
+.afa-pulse-dot {
+  animation: afaPulse 1.8s ease-in-out infinite;
+}
+
+.photo-placeholder {
+  background-image: repeating-linear-gradient(135deg, #edf0ea 0 10px, #f4f6f1 10px 20px);
+}
+
+.court-stripe {
+  background-image: repeating-linear-gradient(90deg, #dcebd9 0 12px, #e7f1e4 12px 24px);
+}
