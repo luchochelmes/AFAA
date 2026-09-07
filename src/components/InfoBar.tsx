@@ -3,7 +3,7 @@ import { RevealGroup, RevealItem } from './Reveal';
 
 const ITEMS: { label: string; value: string; icon: LucideIcon }[] = [
   { label: 'Horarios', value: 'Todos los días 9:00 a 02:00', icon: CalendarDays },
-  { label: 'Canchas', value: '1 de F5 · 2 de F7/F9 · 2 de pádel', icon: LayoutGrid },
+  { label: 'Canchas', value: '1 de F5 · 2 de F7 · 2 de pádel', icon: LayoutGrid },
   { label: 'Cancelación', value: 'Sin cargo hasta 1:30 h antes', icon: MessageCircleOff },
   { label: 'Reservas', value: 'Por WhatsApp, en el momento', icon: MessageCircle }
 ];

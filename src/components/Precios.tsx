@@ -1,36 +1,32 @@
-import { Info } from 'lucide-react';
-import { Badge } from './Badge';
 import { Reveal, RevealGroup, RevealItem } from './Reveal';
-import { Tooltip } from './Tooltip';
 
 const PLANS = [
   {
     label: 'Fútbol 5',
-    price: '$28.000',
+    price: '$40.000',
     unit: 'por hora, cancha completa',
     desc: 'Césped sintético, pelota incluida, luz LED sin costo extra.',
     dark: false
   },
   {
     label: 'Fútbol 7',
-    price: '$38.000',
+    price: '$70.000',
     unit: 'por hora, cancha completa',
     desc: 'Las dos canchas del fondo, una atrás de la otra.',
-    dark: false
-  },
-  {
-    label: 'Fútbol 9',
-    price: '$48.000',
-    unit: 'por hora, cancha ampliada',
-    desc: 'Misma cancha de F7 en formato grande, para 9 por lado.',
-    dark: true,
-    featured: true
+    dark: true
   },
   {
     label: 'Pádel',
-    price: '$18.000',
-    unit: 'por 90 minutos',
-    desc: 'Dos canchas. Alquiler de paletas y pelotas en el buffet.',
+    price: '$20.000',
+    unit: '60 min · $30.000 los 90 min',
+    desc: 'Cancha doble. Alquiler de paletas y pelotas en el buffet.',
+    dark: false
+  },
+  {
+    label: 'Pádel Single',
+    price: '$15.000',
+    unit: '60 min · $22.500 los 90 min',
+    desc: 'Cancha para partidos 1 vs 1.',
     dark: false
   }
 ];
@@ -53,12 +49,9 @@ export function Precios() {
         >
           Precios y servicios
         </h2>
-        <div className="mb-5 flex items-center gap-1.5 font-sans text-[11px] text-muted sm:mb-[26px]">
-          Valores de ejemplo — reemplazar por la tarifa vigente.
-          <Tooltip label="Estos precios son de muestra para el diseño. Actualizalos con la tarifa real del complejo.">
-            <Info className="h-3.5 w-3.5 cursor-help" strokeWidth={2.2} />
-          </Tooltip>
-        </div>
+        <p className="mb-5 font-sans text-[11px] text-muted sm:mb-[26px]">
+          Precios de referencia — confirmá el valor final por WhatsApp.
+        </p>
       </Reveal>
       <RevealGroup className="grid gap-3 sm:gap-3.5" style={{ gridTemplateColumns: 'repeat(auto-fit, minmax(230px, 1fr))' }}>
         {PLANS.map((p) => (
@@ -70,16 +63,9 @@ export function Precios() {
                 : 'flex flex-col gap-2 rounded-2xl border border-border bg-white p-[22px]'
             }
           >
-            <div className="flex items-center justify-between gap-2">
-              <span
-                className={
-                  'font-sans text-[11px] uppercase tracking-widest ' + (p.dark ? 'text-lime' : 'text-forest')
-                }
-              >
-                {p.label}
-              </span>
-              {p.featured && <Badge variant="lime">Más elegido</Badge>}
-            </div>
+            <span className={'font-sans text-[11px] uppercase tracking-widest ' + (p.dark ? 'text-lime' : 'text-forest')}>
+              {p.label}
+            </span>
             <span className="font-display text-[34px] font-extrabold tracking-tighter">{p.price}</span>
             <span className={'text-sm ' + (p.dark ? 'text-cream2' : 'text-body')}>{p.unit}</span>
             <span className={'mt-1.5 text-[13px] leading-relaxed ' + (p.dark ? 'text-cream3' : 'text-muted')}>

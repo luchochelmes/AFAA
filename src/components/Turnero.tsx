@@ -2,7 +2,7 @@ import { useMemo, useState } from 'react';
 import * as Tabs from '@radix-ui/react-tabs';
 import { CalendarCheck } from 'lucide-react';
 import { cn } from '../lib/cn';
-import { courtsFor, getDays, isTaken, priceFor, timesFor, waLink, type Sport } from '../lib/booking';
+import { courtsFor, getDays, isTaken, timesFor, waLink, type Sport } from '../lib/booking';
 import { submitReservation } from '../lib/api';
 import { Reveal, RevealGroup, RevealItem } from './Reveal';
 import { Tooltip } from './Tooltip';
@@ -24,14 +24,14 @@ export function Turnero({ phone }: { phone: string }) {
   const courts = useMemo(() => courtsFor(sport), [sport]);
   const activeCourtId = courts.some((c) => c.id === courtId) ? courtId : courts[0].id;
   const court = courts.find((c) => c.id === activeCourtId)!;
-  const times = useMemo(() => timesFor(sport), [sport]);
+  const times = useMemo(() => timesFor(court.duration), [court.duration]);
 
   const hasSlot = !!slot && !isTaken(day.key, activeCourtId, slot);
   const sportLabel = sport === 'padel' ? 'pádel' : 'fútbol';
   const summaryLine = hasSlot
     ? `${court.name} · ${day.full} · ${slot} h`
     : 'Elegí un horario libre para continuar';
-  const summaryPrice = hasSlot ? priceFor(activeCourtId) : '—';
+  const summaryPrice = hasSlot ? court.price : '—';
 
   const waBooking = hasSlot
     ? waLink(phone, `¡Hola AFA! Quiero reservar ${sportLabel}: ${court.name}, ${day.full} a las ${slot} h.`)
@@ -39,7 +39,7 @@ export function Turnero({ phone }: { phone: string }) {
 
   function pickSport(next: Sport) {
     setSport(next);
-    setCourtId(next === 'padel' ? 'p1' : 'f5');
+    setCourtId(next === 'padel' ? 'padel60' : 'f5');
     setSlot(null);
   }
   function pickDay(i: number) {
@@ -61,7 +61,7 @@ export function Turnero({ phone }: { phone: string }) {
       day: day.full,
       dayKey: day.key,
       time: slot,
-      price: priceFor(activeCourtId)
+      price: court.price
     });
   }
 
@@ -150,9 +150,7 @@ export function Turnero({ phone }: { phone: string }) {
         <RevealItem className="flex flex-col gap-4 rounded-[18px] border border-border bg-white p-[22px]">
           <div className="flex flex-wrap items-baseline justify-between gap-3">
             <span className="font-sans text-[11px] uppercase tracking-widest text-muted">4 · Horario</span>
-            <span className="font-sans text-[11px] text-muted">
-              {sport === 'padel' ? 'turnos de 90 min' : 'turnos de 60 min'}
-            </span>
+            <span className="font-sans text-[11px] text-muted">turnos de {court.duration} min</span>
           </div>
           <div className="grid gap-2" style={{ gridTemplateColumns: 'repeat(auto-fill, minmax(88px, 1fr))' }}>
             {times.map((t) => {

@@ -69,11 +69,11 @@ export function Complejo() {
                 </div>
 
                 <div className="court-stripe flex min-h-[68px] flex-wrap items-center justify-between gap-2 rounded-[10px] border-2 border-forest p-3 sm:min-h-[78px] sm:p-3.5">
-                  <span className="text-sm font-bold">Cancha Fútbol 7 / 9</span>
+                  <span className="text-sm font-bold">Cancha Fútbol 7</span>
                   <span className="font-sans text-[10px] text-forest">05</span>
                 </div>
                 <div className="court-stripe flex min-h-[68px] flex-wrap items-center justify-between gap-2 rounded-[10px] border-2 border-forest p-3 sm:min-h-[78px] sm:p-3.5">
-                  <span className="text-sm font-bold">Cancha Fútbol 7 / 9</span>
+                  <span className="text-sm font-bold">Cancha Fútbol 7</span>
                   <span className="font-sans text-[10px] text-forest">06</span>
                 </div>
               </div>
