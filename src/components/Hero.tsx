@@ -80,9 +80,9 @@ export function Hero() {
           className="mb-4 max-w-[16ch] font-display font-extrabold leading-[0.95] tracking-tighter sm:mb-5 sm:leading-[0.92]"
           style={{ fontSize: 'clamp(38px, 11vw, 82px)' }}
         >
-          Fútbol 5 y 7.
+          Fútbol.
           <br />
-          Pádel y single.
+          Pádel.
           <br />
           <span className="rounded-md bg-lime px-2.5">Y asado.</span>
         </h1>
